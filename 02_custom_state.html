@@ -14,26 +14,44 @@
     <script src="./chapters/react/build/react-dom.js"></script>
 
     <script>
-      // let Component = React.createClass({
-      //   render: function () {
-      //     return React.DOM.span(null, "I'm so customized!");
-      //   },
-      // });
+      var TextAreaCounter = React.createClass({
+        propTypes: {
+          defaultValue: React.PropTypes.string,
+        },
 
-      // ReactDOM.render(
-      //   React.createElement(Component),
-      //   document.getElementById("app")
-      // );
+        getInitialState: function () {
+          return {
+            text: this.props.defaultValue,
+          };
+        },
 
-      let Component = React.createClass({
+        _textChange: function (ev) {
+          this.setState({
+            text: ev.target.value,
+          });
+        },
+
+        componentWillReceiveProps: function (newProps) {
+          this.setState({
+            text: newProps.defaultValue,
+          });
+        },
+
         render: function () {
-          return React.DOM.span(null, "My name is " + this.props.name);
+          return React.DOM.div(
+            null,
+            React.DOM.textarea({
+              value: this.state.text,
+              onChange: this._textChange,
+            }),
+            React.DOM.h3(null, this.state.text.length)
+          );
         },
       });
 
-      ReactDOM.render(
-        React.createElement(Component, {
-          name: "Lucas",
+      var myTextAreaCounter = ReactDOM.render(
+        React.createElement(TextAreaCounter, {
+          defaultValue: "Bob",
         }),
         document.getElementById("app")
       );
