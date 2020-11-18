@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello React</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- Minha aplicação será renderizada aqui -->
+    </div>
+
+    <!-- <script src="./chapters/react/build/react.js"></script> -->
+    <!-- <script src="./chapters/react/build/react-dom.js"></script> -->
+
+    <script>
+      //   Utilizando a sintaxe JSX;
+      //   ReactDOM.render(
+      //     <h1 id="my-heading">
+      //       <span>
+      //         <em>Hell</em>O
+      //       </span>
+      //       World!
+      //     </h1>,
+      //     document.getElementById("app")
+      // );
+
+      ReactDOM.render(
+        React.DOM.h1(
+          {
+            style: {
+              background: "black",
+              color: "white",
+              fontFamily: "Verdana",
+            },
+          },
+          "Hello World!"
+        ),
+        document.getElementById("app")
+      );
+    </script>
+  </body>
+</html>
