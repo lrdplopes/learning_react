@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello React</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- Minha aplicação será renderizada aqui -->
+    </div>
+
+    <script src="./chapters/react/build/react.js"></script>
+    <script src="./chapters/react/build/react-dom.js"></script>
+    <script src="./chapters/babel/browser.js"></script>
+
+    <script type="text/babel">
+      let Fancylink = React.createClass({
+        render: function () {
+          let { size, ...attribs } = this.props;
+
+          switch (
+            size
+            //faz algo com base na propriedade size;
+          ) {
+          }
+
+          return <a {...attribs}> {this.props.children}</a>;
+        },
+      });
+
+      let Example = React.createClass({
+        render: function () {
+          console.log(this.props.children.length);
+          return <div>{this.props.children}</div>;
+        },
+      });
+
+      ReactDOM.render(
+        <Fancylink
+          href="https://github.com/lrdplopes"
+          style={{ color: "red" }}
+          target="_blank"
+          size="medium"
+        >
+          Hello World!
+        </Fancylink>,
+        document.getElementById("app")
+      );
+
+      ReactDOM.render(
+        <Example>
+          <span key="greet"> Hello! </span>
+          {""},<span key="world">World! </span>
+          "!"
+        </Example>,
+        document.getElementById("app")
+      );
+    </script>
+  </body>
+</html>
